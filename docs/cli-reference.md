@@ -152,7 +152,7 @@ Language-aware generate commands (`audio`, `video`, `cinematic-video`, `report`,
 | `video [description]` | `--format [explainer\|brief\|cinematic]`, `--style [auto\|classic\|whiteboard\|kawaii\|anime\|watercolor\|retro-print\|heritage\|paper-craft]`, `--prompt-file PATH`, `--wait` | `generate video "Explainer for kids"` |
 | `cinematic-video [description]` | Alias for `video --format cinematic`; supports the same options | `generate cinematic-video "Documentary about quantum physics"` |
 | `slide-deck [description]` | `--format [detailed\|presenter]`, `--length [default\|short]`, `--prompt-file PATH`, `--wait` | `generate slide-deck` |
-| `revise-slide <description>` | `-a/--artifact <id>` (required), `--slide N` (required), `--prompt-file PATH`, `--wait` | `generate revise-slide "Move title up" --artifact <id> --slide 0` |
+| `revise-slide [description]` | `-a/--artifact <id>` (required), `--slide N` (required), `--prompt-file PATH`, `--wait` | `generate revise-slide "Move title up" --artifact <id> --slide 0` |
 | `quiz [description]` | `--difficulty [easy\|medium\|hard]`, `--quantity [fewer\|standard\|more]`, `--prompt-file PATH`, `--wait` | `generate quiz --difficulty hard` |
 | `flashcards [description]` | `--difficulty [easy\|medium\|hard]`, `--quantity [fewer\|standard\|more]`, `--prompt-file PATH`, `--wait` | `generate flashcards` |
 | `infographic [description]` | `--orientation [landscape\|portrait\|square]`, `--detail [concise\|standard\|detailed]`, `--style [auto\|sketch-note\|professional\|bento-grid\|editorial\|instructional\|bricks\|clay\|anime\|kawaii\|scientific]`, `--prompt-file PATH`, `--wait` | `generate infographic` |
@@ -692,8 +692,9 @@ notebooklm generate video [description] [OPTIONS]
 ```
 
 **Options:**
-- `--format [explainer|brief]` - Video format
-- `--style [auto|classic|whiteboard|kawaii|anime|watercolor|retro|heritage|paper-craft]` - Visual style
+- `--format [explainer|brief|cinematic]` - Video format
+- `--style [auto|custom|classic|whiteboard|kawaii|anime|watercolor|retro-print|heritage|paper-craft]` - Visual style
+- `--style-prompt TEXT` - Custom visual style prompt (required when `--style custom`; rejected with `--format cinematic`)
 - `--language LANG` - Language code
 - `-s, --source ID` - Use specific source(s) (repeatable, uses all if not specified)
 - `--wait` - Wait for generation to complete
